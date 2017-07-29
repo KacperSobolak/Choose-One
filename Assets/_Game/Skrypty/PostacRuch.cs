@@ -16,7 +16,7 @@ public class PostacRuch : MonoBehaviour {
 	}
 	
 	void Update () {
-        //Empty.transform.position = this.transform.position;
+        this.transform.position = Empty.transform.position;
 	}
 
     public void Lewo()
