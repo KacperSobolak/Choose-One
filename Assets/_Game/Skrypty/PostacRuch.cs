@@ -12,11 +12,11 @@ public class PostacRuch : MonoBehaviour {
     public GameObject Empty;
     
 	void Start () {
-		 
+        Empty = GameObject.Find("Postac");
 	}
 	
 	void Update () {
-		
+        //Empty.transform.position = this.transform.position;
 	}
 
     public void Lewo()
