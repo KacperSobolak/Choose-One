@@ -11,6 +11,7 @@ public class Platforma : MonoBehaviour{
     public LosowanieDobrejPlatformy ldps;
     public Color zlyk;
     public Color kolorplatformy;
+    int monetaran;
 
     void Start()
     {
@@ -44,14 +45,18 @@ public class Platforma : MonoBehaviour{
             GameController gc = GameController.GetComponent<GameController>();
             gc.punkty++;
             gc.SpawnPola(this.transform.position);
-            GetComponent<Renderer>().material.color = kolorplatformy; 
+            GetComponent<Renderer>().material.color = kolorplatformy;
+            monetaran = Random.RandomRange(1, 8);
+            if (monetaran == 1)
+            {
+                gc.DodajMonete();
+            }
         }
         else if (dobryB == false)
         {
             other.gameObject.GetComponent<Postac>().GameOver();
             Destroy(this.gameObject);
             GameController.GetComponent<GameController>().KoniecGry();
-
         }
     }
 

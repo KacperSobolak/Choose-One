@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Kolory : MonoBehaviour {
 
+    public GameObject GameControllerGO;
+
     public Color dobrykolor;
     public Color zlykolor;
 
@@ -13,13 +15,38 @@ public class Kolory : MonoBehaviour {
     public float g;
     public float b;
 
+    public int MaxColor = 255;
+    public int MinColor = 0;
+    public int MaxColorPoczatek = 205;
+    public int MinColorPoczatek = 50;
+
+    public int Roznica = 50;
     public int znak;
 
     private void Awake()
     {
-        r = Random.RandomRange(30, 225);
-        g = Random.RandomRange(30, 225);
-        b = Random.RandomRange(30, 225);
+        GameControllerGO = GameObject.Find("GameController");
+        GameController gc = GameControllerGO.gameObject.GetComponent<GameController>();
+
+        Roznica -= gc.punkty;
+        if (Roznica <= 15)
+        {
+            Roznica = 15;
+        }
+        MaxColorPoczatek += gc.punkty;
+        if (MaxColorPoczatek >= 230)
+        {
+            MaxColorPoczatek = 220;
+        }
+        MinColorPoczatek -= gc.punkty;
+        if (MinColorPoczatek <= 25)
+        {
+            MaxColorPoczatek = 25;
+        }
+
+        r = Random.RandomRange(MinColorPoczatek, MaxColorPoczatek);
+        g = Random.RandomRange(MinColorPoczatek, MaxColorPoczatek);
+        b = Random.RandomRange(MinColorPoczatek, MaxColorPoczatek);
 
         rgbzmiana = Random.RandomRange(1, 4);
         dobrykolor = new Color(r/255, g / 255, b / 255);
@@ -30,33 +57,33 @@ public class Kolory : MonoBehaviour {
         {
             if (znak == 1)
             {
-                r -= Random.RandomRange(1, 11) - 20;
+                r -= Random.RandomRange(1, 11) - Roznica;
             }
             else if (znak == 2)
             {
-                r += Random.RandomRange(1, 11) + 20;
+                r += Random.RandomRange(1, 11) + Roznica;
             }
         }
         else if (rgbzmiana == 2)
         {
             if (znak == 1)
             {
-                g -= Random.RandomRange(1, 11) - 20;
+                g -= Random.RandomRange(1, 11) - Roznica;
             }
             else if (znak == 2)
             {
-                g += Random.RandomRange(1, 11) + 20;
+                g += Random.RandomRange(1, 11) + Roznica;
             }
         }
         else if (rgbzmiana == 3)
         {
             if (znak == 1)
             {
-                b -= Random.RandomRange(1, 11) - 20;
+                b -= Random.RandomRange(1, 11) - Roznica;
             }
             else if (znak == 2)
             {
-                b += Random.RandomRange(1, 11) + 20;
+                b += Random.RandomRange(1, 11) + Roznica;
             }
         }
         zlykolor = new Color(r / 255, g / 255, b / 255);

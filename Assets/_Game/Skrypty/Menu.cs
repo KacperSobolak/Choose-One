@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour {
 
+    public Text monety;
+
 	void Start () {
-		
-	}
+        if (PlayerPrefs.HasKey("Monety") == true)
+        {
+            monety.text = "Posiadasz " + PlayerPrefs.GetInt("Monety").ToString() + " monet";
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Monety", 0);
+            monety.text = "Posiadasz " + PlayerPrefs.GetInt("Monety").ToString() + " monet";
+        }
+    }
 	
 	void Update () {
 		
 	}
-
-    public void GrajBTN()
-    {
-        SceneManager.LoadScene(1);
-    }
 }

@@ -45,7 +45,6 @@ public class Postac : MonoBehaviour {
     {
         cubeanimator.SetTrigger("Lewo");
         Debug.Log("Lewo");
-        debugtext.text = "Lewo";
         myvector.x -= 2;
         myvector.z += 2;
         moznaruszyc = false;
@@ -55,7 +54,6 @@ public class Postac : MonoBehaviour {
     {
         cubeanimator.SetTrigger("Prawo");
         Debug.Log("Prawo");
-        debugtext.text = "Prawo";
         myvector.x += 2;
         myvector.z += 2;
         moznaruszyc = false;
@@ -65,7 +63,6 @@ public class Postac : MonoBehaviour {
     {
         cubeanimator.SetTrigger("Przod");
         Debug.Log("Przod");
-        debugtext.text = "Przod";
         myvector.z += 2;
         moznaruszyc = false;
     }

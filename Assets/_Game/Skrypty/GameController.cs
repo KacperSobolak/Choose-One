@@ -12,13 +12,17 @@ public class GameController : MonoBehaviour {
     public Canvas Gameplay;
     public Canvas Startgame;
     public Canvas GameOver;
+    public Canvas menu;
     public GameObject Nowyrekord;
     public Text rekordtext;
+
+    public Text monetytext;
+    public int monetyint;
 
     public GameObject pola;
 
 	void Start () {
-        rekordtext.text = "Aktualny rekord wynosi " + PlayerPrefs.GetInt("Rekord").ToString();
+        monetytext.text = monetyint.ToString();
         pauzapanel.SetActive(false);
         Gameplay.enabled = false;
         Startgame.enabled = true;
@@ -26,17 +30,19 @@ public class GameController : MonoBehaviour {
         Nowyrekord.SetActive(false);
         if (PlayerPrefs.HasKey("Rekord") == true)
         {
-            return;
+            rekordtext.text = "Aktualny rekord wynosi " + PlayerPrefs.GetInt("Rekord").ToString();
         }
         else
         {
             PlayerPrefs.SetInt("Rekord", 0);
+            rekordtext.text = "Aktualny rekord wynosi " + PlayerPrefs.GetInt("Rekord").ToString();
         }
     }
 	
 	void Update () {
-        punktytext.text = punkty.ToString();
-	}
+        punktytext.text = "Punkty: " + punkty.ToString();
+        monetytext.text = "Monety: " + monetyint.ToString();
+    }
 
     public void PauzaBTN()
     {
@@ -63,11 +69,12 @@ public class GameController : MonoBehaviour {
         Debug.Log("Start game");
         Startgame.enabled = false;
         Gameplay.enabled = true;
+        menu.enabled = false;
     }
 
     public void SprobojPonownieBTN()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void WyjdzBTN()
@@ -77,6 +84,7 @@ public class GameController : MonoBehaviour {
 
     public void KoniecGry()
     {
+        PlayerPrefs.SetInt("Monety", PlayerPrefs.GetInt("Monety") + monetyint);
         Startgame.enabled = false;
         Gameplay.enabled = false;
         GameOver.enabled = true;
@@ -85,6 +93,11 @@ public class GameController : MonoBehaviour {
             PlayerPrefs.SetInt("Rekord", punkty);
             Nowyrekord.SetActive(true);
         }
+    }
+
+    public void DodajMonete()
+    {
+        monetyint++;
     }
 
 }
