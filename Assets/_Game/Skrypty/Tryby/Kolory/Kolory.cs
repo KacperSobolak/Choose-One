@@ -29,9 +29,9 @@ public class Kolory : MonoBehaviour {
         GameController gc = GameControllerGO.gameObject.GetComponent<GameController>();
 
         Roznica -= gc.punkty;
-        if (Roznica <= 15)
+        if (Roznica <= 5)
         {
-            Roznica = 15;
+            Roznica = 5;
         }
         MaxColorPoczatek += gc.punkty;
         if (MaxColorPoczatek >= 230)
@@ -41,7 +41,7 @@ public class Kolory : MonoBehaviour {
         MinColorPoczatek -= gc.punkty;
         if (MinColorPoczatek <= 25)
         {
-            MaxColorPoczatek = 25;
+            MinColorPoczatek = 25;
         }
 
         r = Random.RandomRange(MinColorPoczatek, MaxColorPoczatek);
@@ -49,6 +49,13 @@ public class Kolory : MonoBehaviour {
         b = Random.RandomRange(MinColorPoczatek, MaxColorPoczatek);
 
         rgbzmiana = Random.RandomRange(1, 4);
+        /*if (gc.punkty <= 15 && rgbzmiana == 3)
+        {
+            while(rgbzmiana == 3)
+            {
+                rgbzmiana = Random.RandomRange(1, 4);
+            }
+        }*/
         dobrykolor = new Color(r/255, g / 255, b / 255);
 
         znak = Random.RandomRange(1, 3);
@@ -57,7 +64,8 @@ public class Kolory : MonoBehaviour {
         {
             if (znak == 1)
             {
-                r -= Random.RandomRange(1, 11) - Roznica;
+                r -= Random.RandomRange(1, 11);
+                r -= Roznica;
             }
             else if (znak == 2)
             {
@@ -68,7 +76,8 @@ public class Kolory : MonoBehaviour {
         {
             if (znak == 1)
             {
-                g -= Random.RandomRange(1, 11) - Roznica;
+                g -= Random.RandomRange(1, 11);
+                g -= Roznica;
             }
             else if (znak == 2)
             {
@@ -79,7 +88,8 @@ public class Kolory : MonoBehaviour {
         {
             if (znak == 1)
             {
-                b -= Random.RandomRange(1, 11) - Roznica;
+                b -= Random.RandomRange(1, 11);
+                b -= Roznica;
             }
             else if (znak == 2)
             {
