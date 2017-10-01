@@ -21,8 +21,6 @@ public class LosowanieDobrejPlatformy : MonoBehaviour {
     }
 
     public void Start () {
-        Debug.Log("wylosowan platforma: " + ktora );
-        Debug.Log("Wylosowany material: " + materialint);
         DobryKolor = Kolory_Skrypt.dobrykolor;
         Dobrymaterial.color = DobryKolor;
         pola[ktora].GetComponent<Renderer>().material = Dobrymaterial;

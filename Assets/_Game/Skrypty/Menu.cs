@@ -21,6 +21,6 @@ public class Menu : MonoBehaviour {
     }
 	
 	void Update () {
-		
-	}
+        monety.text = "Posiadasz " + PlayerPrefs.GetInt("Monety").ToString() + " monet";
+    }
 }

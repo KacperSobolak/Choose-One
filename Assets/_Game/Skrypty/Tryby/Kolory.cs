@@ -29,9 +29,9 @@ public class Kolory : MonoBehaviour {
         GameController gc = GameControllerGO.gameObject.GetComponent<GameController>();
 
         Roznica -= gc.punkty;
-        if (Roznica <= 5)
+        if (Roznica <= 0)
         {
-            Roznica = 5;
+            Roznica = 0;
         }
         MaxColorPoczatek += gc.punkty;
         if (MaxColorPoczatek >= 230)
