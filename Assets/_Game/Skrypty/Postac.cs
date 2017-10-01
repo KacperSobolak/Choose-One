@@ -44,7 +44,6 @@ public class Postac : MonoBehaviour {
     public void Lewo()
     {
         cubeanimator.SetTrigger("Lewo");
-        Debug.Log("Lewo");
         myvector.x -= 2;
         myvector.z += 2;
         moznaruszyc = false;
@@ -53,7 +52,6 @@ public class Postac : MonoBehaviour {
     public void Prawo()
     {
         cubeanimator.SetTrigger("Prawo");
-        Debug.Log("Prawo");
         myvector.x += 2;
         myvector.z += 2;
         moznaruszyc = false;
@@ -62,15 +60,12 @@ public class Postac : MonoBehaviour {
     public void Przod()
     {
         cubeanimator.SetTrigger("Przod");
-        Debug.Log("Przod");
         myvector.z += 2;
         moznaruszyc = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Cube kolizja");
-        Debug.Log(transform.position - transform.localPosition);
         moznaruszyc = true;
     }
 

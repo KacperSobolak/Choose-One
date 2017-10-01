@@ -59,7 +59,6 @@ public class GameController : MonoBehaviour {
 
     public void SpawnPola(Vector3 position)
     {
-        Debug.Log("Spawn nowe pola");
         position.y = 0;
         Instantiate(pola, position, Quaternion.identity);
     }

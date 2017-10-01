@@ -40,7 +40,6 @@ public class Platforma : MonoBehaviour{
         }
         if (dobryB == true)
         {
-            Debug.Log("Dodaje Punkt!");
             dobryB = false;
             GameController gc = GameController.GetComponent<GameController>();
             gc.punkty++;

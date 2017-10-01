@@ -21,9 +21,6 @@ public class Sklep : MonoBehaviour {
 	void Start () {
         Sklep_Panel.SetActive(false);
         Info_Panel.SetActive(false);
-        PlayerPrefs.SetInt("Monety", 999);
-        PlayerPrefs.DeleteKey("Posiadane");
-        PlayerPrefs.DeleteKey("WybranaP");
         if (PlayerPrefs.HasKey("WybranaP") == false)
         {
             PlayerPrefs.SetInt("WybranaP", 0);
