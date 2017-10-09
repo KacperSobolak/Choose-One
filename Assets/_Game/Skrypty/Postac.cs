@@ -17,6 +17,8 @@ public class Postac : MonoBehaviour {
     public Vector3 myvector;
     Vector3 przsuwanie;
     string AktualenePrzesuniecie;
+
+    public AudioSource audio;
     
 	void Start () {
         moznaruszyc = true;
@@ -47,6 +49,7 @@ public class Postac : MonoBehaviour {
         myvector.x -= 2;
         myvector.z += 2;
         moznaruszyc = false;
+        audio.Play();
     }
 
     public void Prawo()
@@ -55,6 +58,7 @@ public class Postac : MonoBehaviour {
         myvector.x += 2;
         myvector.z += 2;
         moznaruszyc = false;
+        audio.Play();
     }
 
     public void Przod()
@@ -62,6 +66,7 @@ public class Postac : MonoBehaviour {
         cubeanimator.SetTrigger("Przod");
         myvector.z += 2;
         moznaruszyc = false;
+        audio.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
