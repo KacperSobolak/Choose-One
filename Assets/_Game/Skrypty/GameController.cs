@@ -15,13 +15,16 @@ public class GameController : MonoBehaviour {
     public Canvas menu;
     public GameObject Nowyrekord;
     public Text rekordtext;
+    public bool startg;
 
     public Text monetytext;
     public int monetyint;
 
     public GameObject pola;
+    public GameObject postac;
 
 	void Start () {
+        startg = false;
         monetytext.text = monetyint.ToString();
         pauzapanel.SetActive(false);
         Gameplay.enabled = false;
@@ -59,16 +62,19 @@ public class GameController : MonoBehaviour {
 
     public void SpawnPola(Vector3 position)
     {
+        print("Spawn");
         position.y = 0;
         Instantiate(pola, position, Quaternion.identity);
     }
 
     public void StartGame_BTN()
     {
+        postac.GetComponent<Postac>().StartGamePlay();
         Debug.Log("Start game");
         Startgame.enabled = false;
         Gameplay.enabled = true;
         menu.enabled = false;
+        startg = true;
     }
 
     public void SprobojPonownieBTN()

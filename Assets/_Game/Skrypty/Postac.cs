@@ -27,7 +27,28 @@ public class Postac : MonoBehaviour {
     }
 	
 	void Update () {
-        if (moznaruszyc == false)
+        if (gamecon.GetComponent<GameController>().startg)
+        {
+            if (Input.GetKeyDown("right"))
+            {
+                cubeanimator.SetTrigger("Prawo");
+                Debug.Log("space key was pressed");
+            }
+            else if (Input.GetKeyDown("up"))
+            {
+                cubeanimator.SetTrigger("Przod");
+                Debug.Log("space key was pressed");
+            }
+            else if (Input.GetKeyDown("left"))
+            {
+                cubeanimator.SetTrigger("Lewo");
+                Debug.Log("space key was pressed");
+            }
+        }
+        
+
+
+        /*if (moznaruszyc == false)
         {
             for (int i = 0; i < strzalkiBTN.Length; i++)
             {
@@ -40,7 +61,7 @@ public class Postac : MonoBehaviour {
             {
                 strzalkiBTN[i].enabled = true;
             }
-        }
+        }*/
     }
 
     public void Lewo()
@@ -82,6 +103,12 @@ public class Postac : MonoBehaviour {
     public void GameOver()
     {
         Destroy(this.gameObject);
+    }
+
+    public void StartGamePlay()
+    {
+        Debug.Log("start");
+        cubeanimator.SetTrigger("Start");
     }
 
 }

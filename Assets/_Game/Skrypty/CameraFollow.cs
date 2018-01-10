@@ -5,12 +5,13 @@ public class CameraFollow : MonoBehaviour
 {
     
     public GameObject player;
+    public GameObject StartGO;
 
     Vector3 pozycja;
     private Vector3 offset;        
 
-    void Start()
-    {        
+    void Awake()
+    {
         offset = transform.position - player.transform.position;
     }
 
@@ -18,6 +19,10 @@ public class CameraFollow : MonoBehaviour
     {
         pozycja.x = player.transform.position.x;
         pozycja.z = player.transform.position.z;
+        if (StartGO.GetComponent<StartGame>().startgame == false)
+        {
+            pozycja.y = player.transform.position.y;
+        }
         transform.position = pozycja + offset;
     }
 }

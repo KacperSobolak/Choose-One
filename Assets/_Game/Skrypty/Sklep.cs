@@ -34,41 +34,7 @@ public class Sklep : MonoBehaviour {
     }
 	
 	void Update () {
-        for (int i = 0; i <= postaciee.Length - 1; i++)
-        {
-            string posiadane = PlayerPrefs.GetString("Posiadane");
-            char[] posiadanechar = posiadane.ToCharArray();
-            bool posiadasz = false;
-            bool wybrana = false;
-            if (i == PlayerPrefs.GetInt("WybranaP"))
-            {
-                wybrana = true;
-            }
-            for (int o = 0; o <= posiadanechar.Length - 1; o++)
-            {
-                string charstring = posiadanechar[o].ToString();
-                string numers = i.ToString();
-                if (charstring == numers)
-                {
-                    posiadasz = true;
-                }
-            }
-            if (posiadasz == false)
-            {
-                postaciee[i].cenat.text = "Kliknij aby kupic za " + postaciee[i].cena.ToString();
-            }
-            else if (posiadasz == true)
-            {
-                if (wybrana == false)
-                {
-                    postaciee[i].cenat.text = "Kliknij aby wybrac";
-                }
-                else
-                {
-                    postaciee[i].cenat.text = "Wybrana";
-                }
-            }
-        }
+        updatesklep();
     }
 
     public void kupowanie(int numer)
@@ -119,6 +85,45 @@ public class Sklep : MonoBehaviour {
     public void zamknijinfo()
     {
         Info_Panel.SetActive(false);
+    }
+
+    void updatesklep()
+    {
+        for (int i = 0; i <= postaciee.Length - 1; i++)
+        {
+            string posiadane = PlayerPrefs.GetString("Posiadane");
+            char[] posiadanechar = posiadane.ToCharArray();
+            bool posiadasz = false;
+            bool wybrana = false;
+            if (i == PlayerPrefs.GetInt("WybranaP"))
+            {
+                wybrana = true;
+            }
+            for (int o = 0; o <= posiadanechar.Length - 1; o++)
+            {
+                string charstring = posiadanechar[o].ToString();
+                string numers = i.ToString();
+                if (charstring == numers)
+                {
+                    posiadasz = true;
+                }
+            }
+            if (posiadasz == false)
+            {
+                postaciee[i].cenat.text = "Kliknij aby kupic za " + postaciee[i].cena.ToString();
+            }
+            else if (posiadasz == true)
+            {
+                if (wybrana == false)
+                {
+                    postaciee[i].cenat.text = "Kliknij aby wybrac";
+                }
+                else
+                {
+                    postaciee[i].cenat.text = "Wybrana";
+                }
+            }
+        }
     }
 
     IEnumerator Info()
